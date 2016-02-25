@@ -1,0 +1,11 @@
+{
+    "name": "tailor",
+    "description": "Tailor is a cross-platform static analysis and lint tool for source code written in Apple's Swift programming language. It analyzes your code to ensure consistent styling and help avoid bugs.",
+    "maintainer": {
+        "name": "Sleekbyte",
+        "email": "team@sleekbyte.com"
+    },
+    "languages" : ["Swift"],
+    "version": "0.6.0",
+    "spec_version": "0.2.0"
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+# Usage: script/bootstrap
+# Sets up required modules for development.
+
+set -euo pipefail
+
+# Validate new version number
+[[ "$#" -eq 1 ]] || { echo "Usage: script/bootstrap X.Y.Z"; exit 1; }
+[[ "$1" =~ [0-9]{1,}\.[0-9]{1,}\.[0-9]{1,} ]] || { echo "Version number is malformed, see http://semver.org"; exit 1; }
+VERSION="$1"
+
+# Update Tailor version in Dockerfile
+sed -i "" "s/tailor-[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}/tailor-${VERSION}/g" Dockerfile
+
+# Remove old version of Tailor, download and extract new version
+[ -e tailor-*.tar ] && rm tailor-*.tar
+curl -#fLO https://github.com/sleekbyte/tailor/releases/download/v"${VERSION}"/tailor-"${VERSION}".tar
