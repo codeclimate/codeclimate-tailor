@@ -13,5 +13,5 @@ VERSION="$1"
 sed -i "" "s/tailor-[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}/tailor-${VERSION}/g" Dockerfile
 
 # Remove old version of Tailor, download and extract new version
-[ -e tailor-*.tar ] && rm tailor-*.tar
+rm -f tailor-*.tar
 curl -#fLO https://github.com/sleekbyte/tailor/releases/download/v"${VERSION}"/tailor-"${VERSION}".tar
